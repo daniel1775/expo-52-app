@@ -1,9 +1,13 @@
 import { Text, View } from 'react-native';
 
+import { useGetSingleJoke } from '@/src/lib/fetching/useQueryBasic';
+
 export default function Index() {
+	const { jokeData } = useGetSingleJoke();
+
 	return (
-		<View className='bg-red-500'>
-			<Text>Hello World!!!</Text>
+		<View className=''>
+			<Text className='text-black'>{jokeData?.delivery}</Text>
 		</View>
 	);
 }
