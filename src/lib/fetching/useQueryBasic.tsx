@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { singleJokeSchema } from '../schemas/jokes';
+import { singleJokeSchema } from '@/schemas/jokes';
 
 const fetchGetSingleJoke = async () => {
 	const endpoint = 'https://v2.jokeapi.dev/joke/any';

@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 
-import { useGetSingleJoke } from '@/src/lib/fetching/useQueryBasic';
+import { useGetSingleJoke } from '@/fetching/useQueryBasic';
 
 export default function Index() {
 	const { jokeData } = useGetSingleJoke();
