@@ -2,12 +2,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-import { craeteGeneralSlice, TypeCreateGeneralSlice } from './slices/general';
+import { createGeneralSlice, TypeCreateGeneralSlice } from './slices/general';
+import { createJokeSlice, TypeCreateJokeSlice } from './slices/joke';
 
-export const useAppStore = create<TypeCreateGeneralSlice>()(
+export const useAppStore = create<TypeCreateGeneralSlice & TypeCreateJokeSlice>()(
 	persist(
 		(...a) => ({
-			...craeteGeneralSlice(...a),
+			...createGeneralSlice(...a),
+			...createJokeSlice(...a),
 		}),
 		{
 			name: 'appStore',
