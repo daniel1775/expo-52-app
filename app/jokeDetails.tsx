@@ -14,7 +14,7 @@ const JokeDetails = () => {
 						<Text>{`Type: ${currentJokeData?.type}`}</Text>
 					</View>
 				) : (
-					<Text>There is no joke data</Text>
+					<Text>There is no data to show</Text>
 				)}
 			</View>
 		</View>
