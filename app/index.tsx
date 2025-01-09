@@ -1,16 +1,27 @@
+import { useMemo } from 'react';
 import { Text, View } from 'react-native';
 
+import { ButtonPrimary } from '@/UI/atoms/ButtonPrimary';
 import { useGetSingleJoke } from '@/fetching/useQueryBasic';
-import { useAppStore } from '@/src/lib/store/store';
 
 export default function Index() {
-	const { jokeData } = useGetSingleJoke();
-	const { name } = useAppStore();
+	const { jokeData, refetch } = useGetSingleJoke();
+
+	const renderJokeMessage = useMemo(() => {
+		if (jokeData) {
+			return `${jokeData.setup}\n\n${jokeData.delivery}`;
+		}
+		return 'Press the button to get a awesome joke';
+	}, [jokeData]);
 
 	return (
-		<View className=''>
-			<Text className='text-black'>{jokeData?.delivery}</Text>
-			<Text className='text-black'>{name}</Text>
+		<View className='px-8 flex-1 justify-center'>
+			<View className='border-neutral-gray border rounded-md p-4 mb-5'>
+				<Text className='text-black text-center text-xl'>{renderJokeMessage}</Text>
+			</View>
+			<View className='flex flex-row justify-center'>
+				<ButtonPrimary text='Get Joke' onPress={() => refetch()} />
+			</View>
 		</View>
 	);
 }

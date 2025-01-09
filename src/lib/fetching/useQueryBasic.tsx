@@ -11,14 +11,16 @@ const fetchGetSingleJoke = async () => {
 };
 
 export const useGetSingleJoke = () => {
-	const { data, isLoading, isError } = useQuery({
+	const { data, isLoading, isError, refetch } = useQuery({
 		queryKey: ['joke'],
 		queryFn: fetchGetSingleJoke,
+		enabled: false,
 	});
 
 	return {
 		jokeData: data,
 		isLoading,
 		isError,
+		refetch,
 	};
 };
