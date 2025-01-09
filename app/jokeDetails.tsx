@@ -6,9 +6,17 @@ const JokeDetails = () => {
 	const { currentJokeData } = useAppStore();
 
 	return (
-		<View>
-			<Text>{`Lang: ${currentJokeData?.lang}`}</Text>
-			<Text>{`Type: ${currentJokeData?.type}`}</Text>
+		<View className='px-8 flex-1 justify-center'>
+			<View className='border-neutral-gray border rounded-md p-4 mb-5'>
+				{currentJokeData ? (
+					<View>
+						<Text>{`Lang: ${currentJokeData?.lang}`}</Text>
+						<Text>{`Type: ${currentJokeData?.type}`}</Text>
+					</View>
+				) : (
+					<Text>There is no joke data</Text>
+				)}
+			</View>
 		</View>
 	);
 };
